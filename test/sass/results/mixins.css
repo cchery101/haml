@@ -6,7 +6,7 @@
   border-top-width: 2px;
   border-top-color: #ffcc00;
   border-left-width: 1px;
-  border-left-color: #000;
+  border-left-color: #000000;
   -moz-border-radius: 10px;
   border-style: dotted;
   border-width: 2px;
@@ -19,7 +19,7 @@
   border-top-width: 2px;
   border-top-color: #ffcc00;
   border-left-width: 1px;
-  border-left-color: #000;
+  border-left-color: #000000;
   -moz-border-radius: 10px;
   font-size: 2em;
   font-weight: bold;
@@ -30,7 +30,7 @@
   border-top-width: 2px;
   border-top-color: #ffcc00;
   border-left-width: 1px;
-  border-left-color: #000;
+  border-left-color: #000000;
   -moz-border-radius: 10px;
   color: #f00;
   font-size: 20px;
@@ -41,7 +41,7 @@
   border-top-width: 2px;
   border-top-color: #ffcc00;
   border-left-width: 1px;
-  border-left-color: #000;
+  border-left-color: #000000;
   -moz-border-radius: 10px;
 }
 
@@ -90,6 +90,6 @@
   border-top-width: 2px;
   border-top-color: #ffcc00;
   border-left-width: 1px;
-  border-left-color: #000;
+  border-left-color: #000000;
   -moz-border-radius: 10px;
 }

@@ -1,13 +1,14 @@
 !yellow = #fc0
+!black  = #000
 
-=bordered
+=bordered(!w, !c)
   :border
     :top
-      :width 2px
+      :width= !w
       :color = !yellow
     :left
-      :width 1px
-      :color #000
+      :width= !w - 1px
+      :color= !c
   -moz-border-radius: 10px
 
 =header-font
@@ -15,9 +16,9 @@
   :font
     :size 20px
 
-=compound
+=compound(!w)
   +header-font
-  +bordered
+  +bordered(!w * 2, #000)
 
 =complex
   +header-font
@@ -35,14 +36,14 @@
 =deep
   a:hover
     :text-decoration underline
-    +compound
+    +compound(1px)
 
 
 #main
   :width 15em
   :color #0000ff
   p
-    +bordered
+    +bordered 2px !black
     :border
       :style dotted
       :width 2px
@@ -50,19 +51,19 @@
     :width 100px
 
 #left
-  +bordered
+  +bordered(2px, #000)
   :font
     :size 2em
     :weight bold
   :float left
 
 #right
-  +bordered
+  +bordered(2px, #000)
   +header-font
   :float right
 
 .bordered
-  +bordered
+  +bordered(2px, #000)
 
 .complex
   +complex

@@ -410,12 +410,20 @@ END
     end
 
     def parse_mixin_include(line, root)
-      name, arg_string = line.text.scan(/^\+\s*([^(]+)(.*)$/).first
-      args = parse_mixin_arguments(arg_string)
+      name, args = line.text.scan(/^\+\s*([^( ]+)(.*)$/).first
       raise SyntaxError.new("Illegal nesting: Nothing may be nested beneath mixin directives.", @line + 1) unless line.children.empty?
-      raise SyntaxError.new("Invalid mixin include \"#{line.text}\".", @line) if name.nil? || args.nil?
+      raise SyntaxError.new("Invalid mixin include \"#{line.text}\".", @line) if name.nil?
       raise SyntaxError.new("Undefined mixin '#{name}'.", @line) unless mixin = @mixins[name]
 
+      #TODO: This is naïve, but it works in _most_ circumstances
+      #      It fails with complex css values like rgb(255, 255, 0)
+      args = if args && args[0] == ?(
+        parse_mixin_arguments(args)
+      elsif args && args[0] == 32
+        args.strip.split(/ +/, -1)
+      else
+        []
+      end
       args.each {|a| raise SyntaxError.new("Mixin arguments can't be empty.", @line) if a.empty?}
       raise SyntaxError.new(<<END.gsub("\n", "")) if mixin.args.size < args.size
 Mixin #{name} takes #{mixin.args.size} argument#{'s' if mixin.args.size != 1}
@@ -425,10 +433,10 @@ END
       old_constants = @constants.dup
       mixin.args.zip(args).inject(@constants) do |constants, (arg, value)|
         constants[arg[:name]] = if value
-                                  Sass::Constant.parse(value, old_constants, @line)
-                                else
-                                  arg[:default_value]
-                                end
+          Sass::Constant.parse(value, old_constants, @line)
+        else
+          arg[:default_value]
+        end
         raise SyntaxError.new("Mixin #{name} is missing parameter ##{mixin.args.index(arg)+1} (#{arg[:name]}).") unless constants[arg[:name]]
         constants
       end
