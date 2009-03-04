@@ -13,9 +13,6 @@ module Sass::Tree
     end
 
     def to_s(tabs, parent_name = nil)
-      if value[-1] == ?;
-        raise Sass::SyntaxError.new("Invalid attribute: #{declaration.dump} (This isn't CSS!).", @line)
-      end
       real_name = name
       real_name = "#{parent_name}-#{real_name}" if parent_name
       

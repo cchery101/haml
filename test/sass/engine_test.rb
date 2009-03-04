@@ -30,7 +30,6 @@ class SassEngineTest < Test::Unit::TestCase
     "a\n  :b: c" => 'Invalid attribute: ":b: c".',
     "a\n  :b:c d" => 'Invalid attribute: ":b:c d".',
     "a\n  :b=c d" => 'Invalid attribute: ":b=c d".',
-    "a\n  :b c;" => 'Invalid attribute: ":b c;" (This isn\'t CSS!).',
     "a\n  b : c" => 'Invalid attribute: "b : c".',
     "a\n  b=c: d" => 'Invalid attribute: "b=c: d".',
     ":a" => 'Attributes aren\'t allowed at the root of a document.',
@@ -755,6 +754,30 @@ assert_equal(<<CSS, actual_css)
  * continues to the second line. */
 foo {
   bar: baz; }
+CSS
+  end
+
+  def test_semi_colon_delimited_styles
+    actual_css = render(<<SASS)
+!foo = #f00
+!bar = #0f0
+div
+  font-weight: bold; color: black
+  :padding 5px; :margin 10px; :border 1px
+  :color = !foo; :background-color = !bar
+  foo = !foo; bar = !bar
+SASS
+assert_equal(<<CSS, actual_css)
+div {
+  font-weight: bold;
+  color: black;
+  padding: 5px;
+  margin: 10px;
+  border: 1px;
+  color: red;
+  background-color: lime;
+  foo: red;
+  bar: lime; }
 CSS
   end
 

@@ -286,17 +286,24 @@ END
         raise SyntaxError.new("Illegal attribute syntax: can't use normal syntax when :attribute_syntax => :alternate is set.")
       end
 
-      name, eq, value = line.text.scan(attribute_regx)[0]
+      attributes = line.text.split(/\s*;\s*/).map do |sub_line|
+        name, eq, value = sub_line.scan(attribute_regx)[0]
 
-      if name.nil? || value.nil?
-        raise SyntaxError.new("Invalid attribute: \"#{line.text}\".", @line)
+        if name.nil? || value.nil?
+          raise SyntaxError.new("Invalid attribute: \"#{sub_line}\".", @line)
+        end
+        expr = if (eq.strip[0] == SCRIPT_CHAR)
+          parse_script(value, :offset => line.offset + line.text.index(value))
+        else
+          value
+        end
+        Tree::AttrNode.new(name, expr, @options)
       end
-      expr = if (eq.strip[0] == SCRIPT_CHAR)
-        parse_script(value, :offset => line.offset + line.text.index(value))
+      if attributes.size == 1
+        attributes.first
       else
-        value
+        attributes
       end
-      Tree::AttrNode.new(name, expr, @options)
     end
 
     def parse_variable(line)
