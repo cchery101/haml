@@ -195,7 +195,9 @@ New directives provide branching and looping within a sass stylesheet based on S
 
 #### @for
 
-The `@for` directive Loop over a set of numbers defining the current number into the variable specified for each loop.
+The `@for` directive loops over a set of numbers in sequence, defining the current number into the variable
+specified for each loop. The `through` keyword means that the last iteration will include the number, the `to`
+keyword means that it will stop just before that number.
 
     @for !x from 1px through 5px
       .border-#{!x}
