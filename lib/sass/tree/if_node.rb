@@ -37,6 +37,10 @@ module Sass::Tree
 
     protected
 
+    def invalid_child?(child)
+      super unless child.is_a?(ExtendNode)
+    end
+
     def to_src(tabs, opts, fmt, is_else = false)
       name =
         if !is_else; "if"
