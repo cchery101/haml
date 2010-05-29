@@ -61,7 +61,7 @@ would be this Sass:
         &:hover
           background-color: #eee
 
-## Sass Syntax Differences
+## Sass Syntax Differences {#syntax-differences}
 
 In general, most CSS and SCSS syntax
 works straightforwardly in Sass
@@ -70,7 +70,7 @@ and indentation instead of braces.
 However, there are some cases where there are differences or subtleties,
 which are detailed below.
 
-## Property Synax
+## Property Syntax {#property-syntax}
 
 The indented syntax supports two ways of declaring CSS properties.
 The first is just like CSS, except without the semicolon.
@@ -85,7 +85,7 @@ By default, both ways may be used.
 However, the {file:SASS_REFERENCE.md#property_syntax-option `:property_syntax` option}
 may be used to specify that only one property syntax is allowed.
 
-### Multiline Selectors
+### Multiline Selectors {#multiline-selectors}
 
 Normally in the indented syntax, a single selector must take up a single line.
 There is one exception, however:
@@ -97,7 +97,7 @@ For example:
       width: 100px
       height: 30px
 
-### Comments
+### Comments {#comments}
 
 Like everything else in the indented syntax,
 comments are line-based.
@@ -134,7 +134,7 @@ is compiled to:
     a {
       color: green; }
 
-### `@import`
+### `@import`  {#import}
 
 The `@import` directive in Sass does not require quotes, although they may be used.
 For example, this SCSS:
@@ -147,7 +147,7 @@ would be this Sass:
     @import themes/dark
     @import font.sass
 
-### Mixin Directives
+### Mixin Directives {#mixins}
 
 Sass supports shorthands for the `@mixin` and `@include` directives.
 Instead of writing `@mixin`, you can use the character `=`;
@@ -176,7 +176,7 @@ is the same as:
     h1
       @include large-text
 
-## Deprecated Syntax
+## Deprecated Syntax {#deprecations}
 
 Since the indented syntax has been around for a while,
 previous versions have made some syntactic decisions
