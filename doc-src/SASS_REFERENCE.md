@@ -510,6 +510,8 @@ is compiled to:
     a {
       color: green; }
 
+**Note:** There are some differences in how comments work when using  {file:INDENTED_SYNTAX.md#comments the indented syntax}.
+
 ## SassScript {#sassscript}
 
 In addition to the plain CSS property syntax,
