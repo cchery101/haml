@@ -522,7 +522,7 @@ SassScript can be used in any property value.
 
 SassScript can also be used to generate selectors and property names,
 which is useful when writing [mixins](#mixins).
-This is done via [interpolation](#interpolation_).
+This is done via [interpolation](#interpolation).
 
 ### Interactive Shell
 
@@ -593,7 +593,7 @@ and in general if one kind of string is used in the Sass document,
 that kind of string will be used in the resulting CSS.
 
 There is one exception to this, though:
-when using [`#{}` interpolation](#interpolation_),
+when using [`#{}` interpolation](#interpolation),
 quoted strings are unquoted.
 This makes it easier to use e.g. selector names in [mixins](#mixins).
 For example:
@@ -851,7 +851,7 @@ is compiled to:
 See {Sass::Script::Functions} for a full listing of Sass functions,
 as well as instructions on defining your own in Ruby.
 
-### Interpolation: `#{}` {#interpolation_}
+### Interpolation: `#{}` {#interpolation}
 
 You can also use SassScript variables in selectors
 and property names using #{} interpolation syntax:
