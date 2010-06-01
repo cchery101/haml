@@ -956,6 +956,9 @@ would simply compile to
 
     @import "foo.css";
 
+**Note:** The quotes are optional for `@import` when using  {file:INDENTED_SYNTAX.md#import the indented syntax}.
+
+
 #### Partials {#partials}
 
 If you have a SCSS or Sass file that you want to import
@@ -1439,6 +1442,9 @@ For example:
       * html & { height: 1px }
     }
 
+**Note:** {file:INDENTED_SYNTAX.md#mixins The indented syntax} provides syntactic sugar for defining mixins.
+
+
 ### Including a Mixin: `@include` {#including_a_mixin}
 
 Mixins are included in the document
@@ -1499,6 +1505,9 @@ For example:
 
 Mixins that only define descendent selectors, can be safely mixed
 into the top most level of a document.
+
+**Note:** {file:INDENTED_SYNTAX.md#mixins The indented syntax} provides syntactic sugar for including mixins.
+
 
 ### Arguments {#mixin-arguments}
 
