@@ -905,8 +905,8 @@ For example:
 is compiled to:
 
     #main {
-      content: First content;
-      new-content: First time reference; }
+      content: "First content";
+      new-content: "First time reference"; }
 
 ## `@`-Rules and Directives {#directives}
 
